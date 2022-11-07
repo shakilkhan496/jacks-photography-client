@@ -5,7 +5,7 @@ import './css.css'
 const ServiceCard = ({ service }) => {
     const { name, img, price, details } = service;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card hover:scale-110 transition w-96 bg-base-100 shadow-xl">
             <figure><img src={img} alt={name} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CountDown from '../../components/CountDown';
+import DownHeader from '../../components/DownHeader';
 import HomeServices from '../../components/HomeServices';
 
 const Home = () => {
@@ -16,6 +18,8 @@ const Home = () => {
 
                 </div>
                 <HomeServices></HomeServices>
+                <CountDown></CountDown>
+                <DownHeader></DownHeader>
             </div>
 
         </div>
