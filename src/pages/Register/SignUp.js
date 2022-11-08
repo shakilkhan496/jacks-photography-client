@@ -1,12 +1,17 @@
 import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { auth, AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     const [error, setError] = useState('');
     const { user, registerUser } = useContext(AuthContext);
     console.log(user)
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
+
+
 
 
 
@@ -32,6 +37,8 @@ const SignUp = () => {
                 const user = res.user;
                 updateUser(name, photoURL)
                 console.log(user)
+                navigate(from, { replace: true })
+
 
             })
             .catch(err => {

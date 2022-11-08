@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { emailSignIn, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+
 
 
     const handleEmailSignIn = (e) => {
@@ -18,6 +22,8 @@ const Login = () => {
                 const user = res.user;
                 form.reset();
                 // sign in success
+                navigate(from, { replace: true })
+
             })
             .catch(err => {
                 setError(err.message);
@@ -32,6 +38,8 @@ const Login = () => {
                 const user = res.user;
 
                 // sign in success
+                navigate(from, { replace: true })
+
             })
             .catch(err => {
                 setError(err.message);

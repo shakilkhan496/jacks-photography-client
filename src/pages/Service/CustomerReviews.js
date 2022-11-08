@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Review from './Review';
 
-const CustomerReviews = ({ _id }) => {
+const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     console.log(reviews)
@@ -28,7 +28,9 @@ const CustomerReviews = ({ _id }) => {
             email: user.email,
             reviewDetails: review,
             userName: user.displayName,
-            userImg: user.photoURL
+            userImg: user.photoURL,
+            serviceName: serviceName,
+            serviceImg: serviceImg,
 
         }
         fetch('http://localhost:5000/customerReviews', {
