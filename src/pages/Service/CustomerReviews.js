@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Review from './Review';
 
 const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     const { user } = useContext(AuthContext);
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     const [reviews, setReviews] = useState([]);
     console.log(reviews)
 
@@ -15,7 +16,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
                 setReviews(data);
 
             })
-    }, [_id])
+    }, [_id, ignored])
 
 
 
@@ -31,6 +32,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
             userImg: user.photoURL,
             serviceName: serviceName,
             serviceImg: serviceImg,
+            date: new Date()
 
         }
         fetch('http://localhost:5000/customerReviews', {
@@ -45,7 +47,8 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
                 console.log(data);
                 if (data.acknowledged === true) {
                     alert('Review posted successfully')
-                    setReviews([...reviews, customerReview]);
+                    forceUpdate();
+                    setReviews([...reviews]);
                     form.reset();
                 }
             })
@@ -55,12 +58,17 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     return (
         <div className='lg:p-20'>
 
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-20 lg:m-20'>
-                {
-                    reviews?.map(review => <Review key={review._id} review={review}></Review>)
-                }
+            {
+                reviews.length > 0 ? <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-20 lg:m-20'>
 
-            </div>
+                    {
+                        reviews?.map(review => <Review key={review._id} review={review}></Review>)
+                    }
+
+                </div> : <div className='text-center font-semibold text-red-600 '>
+                    <h1>No reviews added</h1>
+                </div>
+            }
 
             <div>
                 {
