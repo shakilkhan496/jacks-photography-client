@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviews = () => {
     useTitle('MyReviews')
@@ -42,8 +44,19 @@ const MyReviews = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
+                        toast.success('Deleted successfully!', {
+                            position: "top-center",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                        });
                         const remaining = myReviews.filter(r => r._id !== id);
                         setMyReviews(remaining);
+
                     }
                 })
         }
@@ -51,6 +64,7 @@ const MyReviews = () => {
     }
     return (
         <div>
+            <ToastContainer></ToastContainer>
             {
                 myReviews.length !== 0 ?
                     <div className='lg:m-32'>

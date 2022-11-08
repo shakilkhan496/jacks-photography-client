@@ -1,5 +1,7 @@
 import React from 'react';
 import useTitle from '../../hooks/useTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddServices = () => {
     useTitle('Post services')
@@ -30,7 +32,16 @@ const AddServices = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged === true) {
-                    alert('Service added successfully');
+                    toast.success('Service posted successfully!', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
                     form.reset();
                 }
             })
@@ -44,6 +55,7 @@ const AddServices = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center lg:text-left">
+                    <ToastContainer></ToastContainer>
 
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

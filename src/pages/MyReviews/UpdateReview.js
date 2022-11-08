@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateReview = () => {
     useTitle('UpdateReview')
@@ -26,7 +28,16 @@ const UpdateReview = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Review updated')
+                    toast.success('Review updated', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
 
                 }
             })
@@ -38,6 +49,7 @@ const UpdateReview = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <ToastContainer></ToastContainer>
             <div className="hero-content flex-col ">
                 <div className="text-center lg:text-left">
                     <p className="py-6">Update your review here</p>

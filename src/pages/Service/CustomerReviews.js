@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Review from './Review';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     const { user } = useContext(AuthContext);
@@ -46,7 +48,17 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged === true) {
-                    alert('Review posted successfully')
+                    toast.success('Review posted successfully!', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
+
                     forceUpdate();
                     setReviews([...reviews]);
                     form.reset();
@@ -57,6 +69,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     }
     return (
         <div className='lg:p-20'>
+            <ToastContainer></ToastContainer>
 
             {
                 reviews.length > 0 ? <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-20 lg:m-20'>
