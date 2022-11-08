@@ -18,7 +18,13 @@ const Headers = () => {
 
 
     const navMenus = <>
-        <li><Link to='/services' className='text-2xl font-semibold'>Services</Link></li>
+        <li><Link to='/services' className='text-xl btn btn-ghost mr-3 font-semibold'>Services</Link></li>
+        {
+            user?.uid ? <div className='lg:flex md:flex items-center space-x-6'>
+                <Link to='/myReviews' className='text-xl btn btn-ghost font-semibold'>My reviews</Link>
+                <Link to='/addService' className='text-xl btn btn-ghost font-semibold'>Add service</Link>
+            </div> : ''
+        }
 
     </>
     return (
