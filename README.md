@@ -16,5 +16,6 @@
 ### 4. Firebase Authentication
 ### 5. TailwindCSS
 ### 6. Daisy UI
+### 7. dotenv
 
 Thank you.
