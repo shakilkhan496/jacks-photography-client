@@ -61,27 +61,8 @@ const Login = () => {
     const handleGoogleSignin = () => {
         googleSignIn()
             .then(res => {
-                const user = res.user;
-                const currentUser = {
-                    email: user.email
-                }
-                //jwt token
 
-                fetch('https://jacks-photography.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem('token', data.token);
-                        navigate(from, { replace: true })
-                    });
-                // sign in success
-
-
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 setError(err.message);

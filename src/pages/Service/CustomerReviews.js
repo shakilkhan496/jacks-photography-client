@@ -9,7 +9,6 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     const { user } = useContext(AuthContext);
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     const [reviews, setReviews] = useState([]);
-    console.log(reviews)
 
     useEffect(() => {
         fetch(`https://jacks-photography.vercel.app/customerReviews?productID=${_id}`)
@@ -46,7 +45,6 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged === true) {
                     toast.success('Review posted successfully!', {
                         position: "top-center",

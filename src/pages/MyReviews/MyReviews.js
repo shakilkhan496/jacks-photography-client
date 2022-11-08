@@ -9,7 +9,6 @@ const MyReviews = () => {
     useTitle('MyReviews')
     const { user, logOut } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
-    console.log(myReviews)
 
     useEffect(() => {
         fetch(`https://jacks-photography.vercel.app/myReviews?email=${user.email}`, {

@@ -7,8 +7,7 @@ import useTitle from '../../hooks/useTitle';
 const SignUp = () => {
     useTitle('SignUp')
     const [error, setError] = useState('');
-    const { user, registerUser } = useContext(AuthContext);
-    console.log(user)
+    const { registerUser } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
@@ -38,7 +37,6 @@ const SignUp = () => {
             .then(res => {
                 const user = res.user;
                 updateUser(name, photoURL)
-                console.log(user)
                 navigate(from, { replace: true })
 
 

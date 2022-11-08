@@ -17,7 +17,6 @@ const UpdateReview = () => {
         const updatedReview = {
             reviewDetails: reviewDetails
         }
-        console.log(updatedReview);
         fetch(`https://jacks-photography.vercel.app/customerReviews/${_id}`, {
             method: 'PATCH',
             headers: {

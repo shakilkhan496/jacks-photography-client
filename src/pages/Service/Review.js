@@ -2,7 +2,6 @@ import React from 'react';
 
 const Review = ({ review }) => {
     const { userName, reviewDetails, userImg } = review;
-    console.log(reviewDetails)
     return (
         <div className="card  bg-neutral text-neutral-content">
             <div className="card-body items-center text-center">
