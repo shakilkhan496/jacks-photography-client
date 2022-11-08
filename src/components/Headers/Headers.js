@@ -25,6 +25,8 @@ const Headers = () => {
                 <Link to='/addService' className='text-xl btn btn-ghost font-semibold'>Add service</Link>
             </div> : ''
         }
+        <li><Link to='/blogs' className='text-xl btn btn-ghost mr-3 font-semibold'>Blogs</Link></li>
+
 
     </>
     return (

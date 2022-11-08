@@ -2,8 +2,10 @@ import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { auth, AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
+    useTitle('SignUp')
     const [error, setError] = useState('');
     const { user, registerUser } = useContext(AuthContext);
     console.log(user)

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import CustomerReviews from './CustomerReviews';
 
 const Service = () => {
@@ -7,6 +8,7 @@ const Service = () => {
 
 
     const { name, img, details, price, _id } = service[0];
+    useTitle(name)
     return (
         <div>
             <div className='bg-blue-100 lg:m-10 rounded-3xl'>

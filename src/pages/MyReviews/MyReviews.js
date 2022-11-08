@@ -1,15 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    useTitle('MyReviews')
+    const { user, logOut } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
     console.log(myReviews)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myReviews?email=${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/myReviews?email=${user.email}`, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOut()
+                }
+                return res.json();
+            })
             .then(data => {
                 setMyReviews(data);
 
@@ -77,7 +89,7 @@ const MyReviews = () => {
 
                                                 <span className="badge badge-ghost badge-sm">{myReview.reviewDetails}</span>
                                             </td>
-                                            <Link className="btn btn-success mt-3 ">Update</Link>
+                                            <Link to={`/updateReview/${myReview._id}`} className="btn btn-success mt-3 ">Update</Link>
 
                                             <th>
                                                 <button onClick={() => handleDelete(myReview._id)} className="btn bg-red-600 ">X</button>

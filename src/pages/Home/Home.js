@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import CountDown from '../../components/CountDown';
 import DownHeader from '../../components/DownHeader';
 import HomeServices from '../../components/HomeServices';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div className="hero mt-10 min-h-screen bg-base-200">
             <div>
