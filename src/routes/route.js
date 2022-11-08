@@ -15,6 +15,7 @@ import PrivateRoutes from "./PrivateRoutes";
 export const route = createBrowserRouter([
     {
         path: '/',
+        errorElement: <div className="text-center text-red-600 text-5xl mt-40"><h1>404 NOT FOUND</h1></div>,
         element: <Main></Main>,
         children: [
             {
