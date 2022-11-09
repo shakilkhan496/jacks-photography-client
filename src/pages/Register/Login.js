@@ -28,7 +28,7 @@ const Login = () => {
                 }
                 //jwt token
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://jacks-photography.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const Login = () => {
                 }
                 //jwt token
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://jacks-photography.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

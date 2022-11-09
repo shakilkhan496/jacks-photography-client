@@ -37,7 +37,7 @@ export const route = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <Service></Service>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://jacks-photography.vercel.app/services/${params.id}`)
             },
             {
                 path: '/myReviews',
@@ -54,7 +54,7 @@ export const route = createBrowserRouter([
             {
                 path: '/updateReview/:id',
                 element: <UpdateReview></UpdateReview>,
-                loader: ({ params }) => fetch(`http://localhost:5000/customerReviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://jacks-photography.vercel.app/customerReviews/${params.id}`)
             }
         ]
     }

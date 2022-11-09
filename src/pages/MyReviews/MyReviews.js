@@ -11,7 +11,7 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myReviews?email=${user.email}`, {
+        fetch(`https://jacks-photography.vercel.app/myReviews?email=${user.email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
@@ -31,7 +31,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         const confirm = window.confirm('Are you sure to delete?');
         if (confirm) {
-            return fetch('http://localhost:5000/customerReviews', {
+            return fetch('https://jacks-photography.vercel.app/customerReviews', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'

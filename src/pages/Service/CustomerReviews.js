@@ -11,7 +11,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/customerReviews?productID=${_id}`)
+        fetch(`https://jacks-photography.vercel.app/customerReviews?productID=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -36,7 +36,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
             date: new Date()
 
         }
-        fetch('http://localhost:5000/customerReviews', {
+        fetch('https://jacks-photography.vercel.app/customerReviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
