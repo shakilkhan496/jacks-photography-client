@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Lobster&family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lato&family=Lobster&family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Dancing+Script:wght@500&display=swap');
+
+.lobster {
+    font-family: 'Lobster', cursive;
+}
+
+.hand-write {
+    font-family: 'Bad Script', cursive;
+}
+
 #p {
     display: -webkit-box;
     overflow: hidden;

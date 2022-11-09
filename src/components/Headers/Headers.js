@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-import logo from '../../assets/favicon.svg'
+import logo from '../../assets/favicon.svg';
+import '../css.css'
 
 const Headers = () => {
     const { logOut, user } = useContext(AuthContext);
@@ -21,8 +22,8 @@ const Headers = () => {
         <li><Link to='/services' className='text-xl btn btn-ghost mr-3 font-semibold'>Services</Link></li>
         {
             user?.uid ? <div className='lg:flex  items-center space-x-6'>
-                <Link to='/myReviews' className='text-xl btn btn-ghost font-semibold'>My reviews</Link>
-                <Link to='/addService' className='text-xl btn btn-ghost font-semibold'>Add service</Link>
+                <Link to='/myReviews' className='text-xl btn btn-ghost mr-3 font-semibold'>My reviews</Link>
+                <Link to='/addService' className='text-xl btn btn-ghost mr-3 font-semibold'>Add service</Link>
             </div> : ''
         }
         <li><Link to='/blogs' className='text-xl btn btn-ghost mr-3 font-semibold'>Blogs</Link></li>
@@ -31,7 +32,7 @@ const Headers = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar fixed bg-white z-10 top-0 shadow-2xl">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,7 +43,7 @@ const Headers = () => {
                         </ul>
                     </div>
                     <img className='w-14 lg:ml-10' src={logo} alt="" />
-                    <Link to='/' className="btn btn-ghost normal-case lg:text-3xl">jacks<span className='text-blue-600'>Photography</span></Link>
+                    <Link to='/' className="btn lobster btn-ghost normal-case md:text-2xl text-2xl lg:text-3xl">Jacks<span className='text-blue-600'>Photography</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -51,7 +52,12 @@ const Headers = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user?.uid ? <button onClick={handleLogOut} className='btn btn-outline'>Logout</button> : <Link to='/login' className='btn btn-outline'>Login</Link>
+                        user?.uid ?
+                            <div className='flex items-center justify-center space-x-4'>
+                                <img className='w-10 h-10 lg:block md:block hidden rounded-full ring-slate-800 ring-offset-2 ring-2' src={user.photoURL} alt=''></img>
+                                <button onClick={handleLogOut} className='btn btn-outline'>Logout</button>
+                            </div>
+                            : <Link to='/login' className='btn btn-outline'>Login</Link>
                     }
                 </div>
             </div>
@@ -60,3 +66,4 @@ const Headers = () => {
 };
 
 export default Headers;
+

@@ -3,10 +3,11 @@ import logo from '../../assets/favicon.svg'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-neutral text-neutral-content">
+        <footer className="footer p-10 lg:pl-40 bg-black text-neutral-content">
             <div>
-                <img className='w-20' src={logo} alt="" />
-                <p><span className='text-2xl'>jacks<span className='text-blue-600'>Photography</span></span> Ltd. <br /> <br />Providing reliable services</p>
+                <img className='w-20 bg-white p-3 rounded-full' src={logo} alt="" />
+                <p><span className='text-3xl lobster'>jacks<span className='text-blue-600'>Photography</span></span> Ltd. <br /> <br />Providing reliable services</p>
+                <p>Copyright © 2022 - All right reserved</p>
             </div>
             <div>
                 <span className="footer-title">Social</span>

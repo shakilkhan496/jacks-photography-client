@@ -21,7 +21,7 @@ const AddServices = () => {
             details: details,
             price: price
         }
-        fetch('https://jacks-photography.vercel.app/services', {
+        fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const AddServices = () => {
 
     return (
 
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen mt-20 bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center lg:text-left">
                     <ToastContainer></ToastContainer>

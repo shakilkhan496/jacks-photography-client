@@ -8,7 +8,7 @@ const AllServiceCard = ({ service }) => {
     return (
         <div>
             <PhotoProvider>
-                <div className="card hover:scale-105 transition w-96 bg-base-100 shadow-xl">
+                <div data-aos="zoom-in" className="card hover:scale-105 transition w-96 bg-base-100 shadow-xl">
                     <figure><PhotoView src={img}><img src={img} alt={name} /></PhotoView></figure>
                     <div className="card-body">
                         <h2 className="card-title">{name}</h2>

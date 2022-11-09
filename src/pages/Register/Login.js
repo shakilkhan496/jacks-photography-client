@@ -4,7 +4,6 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
-    const [loading, setLoading] = useState(false);
 
     useTitle('Login')
     const { emailSignIn, googleSignIn } = useContext(AuthContext);
@@ -29,7 +28,7 @@ const Login = () => {
                 }
                 //jwt token
 
-                fetch('https://jacks-photography.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -62,12 +61,13 @@ const Login = () => {
         googleSignIn()
             .then(res => {
                 const user = res.user;
+                console.log(user)
                 const currentUser = {
                     email: user.email
                 }
                 //jwt token
 
-                fetch('https://jacks-photography.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -89,60 +89,55 @@ const Login = () => {
             })
     }
     return (
-        <div className="hero">
-            {
-                !loading ?
-                    <div className="hero-content rounded-3xl  flex-col ">
-                        <div className="text-center p-4  ">
+        <div data-aos="zoom-in" className="hero mt-20 mb-20">
+
+            <div className="hero-content rounded-3xl  flex-col ">
+                <div className="text-center p-4  ">
+                </div>
+                <div className="card flex-shrink-0 w-full  shadow-2xl">
+
+
+                    {/* Main form */}
+                    <form onSubmit={handleEmailSignIn} className="card-body">
+                        <h1 className="text-4xl ">Login</h1>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text ">Email</span>
+                            </label>
+                            <input name='email' type="text" placeholder="email" className="input input-bordered" />
                         </div>
-                        <div className="card flex-shrink-0 w-full  shadow-2xl">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text ">Password</span>
+                            </label>
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" />
 
-
-                            {/* Main form */}
-                            <form onSubmit={handleEmailSignIn} className="card-body">
-                                <h1 className="text-4xl ">Login</h1>
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text ">Email</span>
-                                    </label>
-                                    <input name='email' type="text" placeholder="email" className="input input-bordered" />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text ">Password</span>
-                                    </label>
-                                    <input name='password' type="password" placeholder="password" className="input input-bordered" />
-
-                                </div>
-                                <div className='text-red-600 font-bold'>
-                                    {
-                                        error
-                                    }
-                                </div>
-                                <div className="form-control mt-6">
-                                    <button className="btn btn-outline   hover:scale-110 ">Login</button>
-                                </div>
-                                <div className='mt-4'>
-                                    <p>New to us? <Link to='/signup' className='text-sky-500 hover:font-bold'>Register here</Link></p>
-                                </div>
-
-                            </form>
-                            {/* Form end */}
-
-                            <div className='text-center space-y-5  p-4'>
-                                <p>Or </p>
-                                <p>Log in with</p>
-                                <button onClick={handleGoogleSignin} className='btn bg-sky-600'>GOOGLE</button>
-
-                            </div>
                         </div>
-                    </div>
-                    : <div className='flex h-60 justify-center items-center'>
+                        <div className='text-red-600 font-bold'>
+                            {
+                                error
+                            }
+                        </div>
+                        <div className="form-control mt-6">
+                            <button className="btn btn-outline   hover:scale-110 ">Login</button>
+                        </div>
+                        <div className='mt-4'>
+                            <p>New to us? <Link to='/signup' className='text-sky-500 hover:font-bold'>Register here</Link></p>
+                        </div>
 
-                        <h1 className='text-center'> <img className='w-24' src="https://i.gifer.com/ZKZg.gif" alt="" /></h1>
+                    </form>
+                    {/* Form end */}
+
+                    <div className='text-center space-y-5  p-4'>
+                        <p>Or </p>
+                        <p>Log in with</p>
+                        <button onClick={handleGoogleSignin} className='btn bg-sky-600'>GOOGLE</button>
+
                     </div>
-            }
+                </div>
+            </div>
+
         </div>
     );
 };

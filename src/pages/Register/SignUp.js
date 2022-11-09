@@ -58,7 +58,7 @@ const SignUp = () => {
 
     }
     return (
-        <div className="hero">
+        <div data-aos="zoom-in" className="hero mt-20 mb-20">
             <div className="hero-content rounded-3xl  flex-col ">
                 <div className="text-center p-4  ">
                 </div>

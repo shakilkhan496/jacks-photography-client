@@ -2,7 +2,7 @@ import React from 'react';
 
 const CountDown = () => {
     return (
-        <div className='flex flex-col justify-center items-center mt-40 mb-40 p-10 rounded-3xl bg-black text-white'>
+        <div data-aos="zoom-in" className='flex flex-col justify-center items-center mt-40 mb-40 p-10 rounded-3xl bg-black text-white'>
             <div>
                 <h1 className='lg:text-4xl font-bold mb-5'>Special offer <span className='text-red-600'>closes</span> in</h1>
             </div>

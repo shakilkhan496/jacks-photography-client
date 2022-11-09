@@ -11,7 +11,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`https://jacks-photography.vercel.app/customerReviews?productID=${_id}`)
+        fetch(`http://localhost:5000/customerReviews?productID=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -36,7 +36,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
             date: new Date()
 
         }
-        fetch('https://jacks-photography.vercel.app/customerReviews', {
+        fetch('http://localhost:5000/customerReviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
             <ToastContainer></ToastContainer>
 
             {
-                reviews.length > 0 ? <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-20 lg:m-20'>
+                reviews.length > 0 ? <div className='grid lg:grid-cols-3 mb-5 md:grid-cols-2 gap-20 lg:m-20'>
 
                     {
                         reviews?.map(review => <Review key={review._id} review={review}></Review>)
@@ -86,7 +86,7 @@ const CustomerReviews = ({ _id, serviceName, serviceImg }) => {
                     !user ?
 
                         <>
-                            <div className='text-center text-2xl font-semibold'>
+                            <div className='text-center mb-5 text-2xl font-semibold'>
                                 <h1>Please <Link to='/login' className='btn btn-outline'>Login</Link> to Add reviews</h1>
                             </div>
 

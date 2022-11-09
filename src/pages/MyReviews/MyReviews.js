@@ -11,7 +11,7 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`https://jacks-photography.vercel.app/myReviews?email=${user.email}`, {
+        fetch(`http://localhost:5000/myReviews?email=${user.email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
@@ -31,7 +31,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         const confirm = window.confirm('Are you sure to delete?');
         if (confirm) {
-            return fetch('https://jacks-photography.vercel.app/customerReviews', {
+            return fetch('http://localhost:5000/customerReviews', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ const MyReviews = () => {
 
     }
     return (
-        <div>
+        <div className='mt-24 mb-24'>
             <ToastContainer></ToastContainer>
             {
                 myReviews.length !== 0 ?
@@ -82,7 +82,7 @@ const MyReviews = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        myReviews.map(myReview => <tr key={myReview._id} >
+                                        myReviews.map(myReview => <tr data-aos="zoom-in" key={myReview._id} >
 
                                             <td>
                                                 <div className="flex items-center space-x-3">
